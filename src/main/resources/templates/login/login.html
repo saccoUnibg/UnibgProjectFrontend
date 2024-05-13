@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+  <div align="center">
+      <form action="#" th:action="@{/profilehomepage}" method="post" modelAttribute="utente">
+          <div class="container">
+              <h1>Login</h1>
+              <hr>
+              <label>Email</label>
+              <input type="text" placeholder="mail" name="mail" required>
+              <label for="psw"><b>Password</b></label>
+              <input type="password" placeholder="Password" name="psw" id="psw" required>
+              <hr>
+              <button type="submit" class="registerbtn">Login</button>
+          </div>
+      </form>
+  </div>
+</body>
+</html>

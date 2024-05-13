@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Visualizza Prenotazione</title>
+</head>
+<body>
+    <div align="center">
+        <h1>Prenotazioni</h1>
+        <h3>Da qui puoi vedere e cancellare le prenotazioni effettuate</h3> <br> <br> <hr>
+    </div>
+
+    <table align="center">
+        <thead>
+        <tr>
+            <th> Data </th>
+            <th> Partenza </th>
+            <th> Arrivo </th>
+            <th> Ora Partenza </th>
+            <th> ID Volo </th>
+        </tr>
+        </thead>
+        <tbody>
+        <div align="center">
+            <tr th:if="${listaVoli.empty}">
+                <td colspan="2"> Nessuna prenotazione disponibile!  </td>
+            </tr>
+        </div>
+
+        <tr th:each="volo : ${listaVoli}" align="center">
+            <td><span th:text="${volo.data}"> Data </span></td>
+            <td><span th:text="${volo.partenza}"> Partenza </span></td>
+            <td><span th:text="${volo.arrivo}"> Arrivo </span></td>
+            <td><span th:text="${volo.h_partenza}"> Ora Partenza </span></td>
+            <td><span th:text="${volo.id}"> ID Volo </span></td>
+            <td>
+                <div align="center">
+                    <form action="#" th:action="@{/prenotazioni/elimina}" method="post" modelattribute="volo">
+                        <div class="container">
+                            <input type="hidden" th:value="${volo.partenza}" name="partenza">
+                            <input type="hidden" th:value="${volo.arrivo}" name="arrivo">
+                            <input type="hidden" th:value="${volo.h_partenza}" name="h_partenza">
+                            <input type="hidden" th:value="${volo.h_arrivo}" name="h_arrivo">
+                            <input type="hidden" th:value="${volo.compagnia}" name="compagnia">
+                            <input type="hidden" th:value="${volo.prezzo}" name="prezzo">
+                            <input type="hidden" th:value="${volo.data}" name="data">
+                            <input type="hidden" th:value="${volo.id}" name="id">
+                            <button type="submit">Elimina</button>
+                        </div>
+                    </form>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+<br><hr><br><br>
+
+    <div align="center">
+        <form action="#" th:action="@{/profilehomepage}" method="post">
+            <div>
+                <button type="submit">Homepage</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

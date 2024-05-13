@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Login success</title>
+</head>
+<body>
+    <div align="center">
+        <h1>Benvenuto</h1>
+        <hr>
+        <h2>Anagrafica utente</h2>
+
+        <p><b>Nome: </b></p>
+        <p th:text="${utente.nome}"></p>
+
+        <h4>Cognome: </h4>
+        <p th:text="${utente.cognome}"></p>
+
+        <h4>Indirizzo e-mail: </h4>
+        <p th:text="${utente.mail}"></p>
+
+        <h4>Codice Fiscale: </h4>
+        <p th:text="${utente.cf}"></p>
+
+        <hr>
+
+        <a href="/voli/ricerca">
+            <button>Inizia una nuova ricerca</button>
+        </a>
+        <br><br>
+        <a href="/prenotazioni/visualizza">
+            <button>Visualizza le tue prenotazioni</button>
+        </a>
+        <br><br>
+        <a href="/anagrafica/modifica">
+          <button>modifica i tuoi dati</button>
+        </a>
+        <br><br>
+    </div>
+
+    <div align="center">
+        <hr>
+        <a href="/logout">
+            <button>logout</button>
+        </a>
+        <hr>
+    </div>
+</body>
+</html>

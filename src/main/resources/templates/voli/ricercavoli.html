@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Ricerca voli</title>
+</head>
+<body>
+<div align="center">
+  <form action="#" th:action="@{/voli/lista}" method="get" modelAttribute="utente">
+    <div class="container">
+      <h1>Ricerca Voli</h1>
+      <hr>
+      <label>Aeroporto Partenza</label><br>
+      <input type="text" placeholder="Partenza" name="partenza" size="40" required><br>
+      <label>Aeroporto Arrivo</label> <br>
+      <input type="text" placeholder="Arrivo" name="arrivo" size="40" required><br>
+      <label>Data</label> <br>
+      <input type="date" placeholder="Data" name="data" required>
+      <hr>
+
+      <button type="submit" class="registerbtn">Cerca!</button>
+    </div>
+  </form>
+</div>
+
+<div align="center">
+  <form action="#" th:action="@{/profilehomepage}" method="post">
+    <div class="container">
+      <button type="submit">Homepage</button>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>

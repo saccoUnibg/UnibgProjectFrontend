@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Elimina Prenotazione</title>
+</head>
+<body>
+    <div align = "center">
+        <h1>Elimina prenotazione</h1>
+        <hr>
+    </div>
+
+    <form action="#" th:action="@{/prenotazioni/elimina/conferma}" method="post" modelAttribute="volo">
+        <div class="container" align = "center">
+
+            <h4>Data: </h4>
+            <p th:text="${volo.data}"></p>
+
+            <p><b>Partenza: </b></p>
+            <p th:text="${volo.partenza}"></p>
+
+            <h4>Arrivo: </h4>
+            <p th:text="${volo.arrivo}"></p>
+
+            <h4>Ora Partenza: </h4>
+            <p th:text="${volo.h_partenza}"></p>
+
+            <hr>
+
+            <h2>La prenotazione per il seguente volo verrà eliminata.</h2><br>
+            <h2>Confermare?</h2>
+
+            <button type="submit" class="registerbtn">Conferma!</button> <br><br>
+            <button type="submit" th:formaction="@{/profilehomepage}">Annulla e torna alla homepage</button>
+
+        </div>
+        <br><br>
+        <hr>
+
+    </form>
+</body>
+</html>
