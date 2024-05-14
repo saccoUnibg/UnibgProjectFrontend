@@ -1,7 +1,6 @@
 package com.unibg.UnibgProjectFrontend.controller;
 
 
-import com.unibg.UnibgProjectFrontend.entity.UtenteEntity;
 import com.unibg.UnibgProjectFrontend.model.Utente;
 import com.unibg.UnibgProjectFrontend.service.LoginService;
 import com.unibg.UnibgProjectFrontend.utils.UtilsGeneric;
@@ -34,7 +33,7 @@ public class LoginController {
     @PostMapping("/registrazioneform")
     public String registrazioneForm(@ModelAttribute("utente") Utente utente, Model model) {
         try {
-            UtenteEntity utenteEntity = loginService.saveRegistrazione(utente);
+            utente = loginService.saveRegistrazione(utente);
             return "login/registrazionesuccess";
         } catch (Exception e) {
             return "error";
@@ -49,19 +48,19 @@ public class LoginController {
     @PostMapping("/profilehomepage")
     public String loginForm(@ModelAttribute("utente") Utente utente, Model model, HttpSession session) {
         try {
-            UtenteEntity utenteEntity;
+
             if (session.getAttribute("mail") == null) {
-                utenteEntity = loginService.login(utente);
-                if (utenteEntity == null) {
+                utente = loginService.login(utente);
+                if (utente == null) {
                     return "login/login";
                 } else {
                     session.setAttribute("mail", utente.getMail());
                 }
             } else {
-                utenteEntity = loginService.findByMail((String) session.getAttribute("mail"));
+                utente = loginService.findByMail((String) session.getAttribute("mail"));
             }
-            session.setAttribute("utente", utenteEntity);
-            model.addAttribute("utente", utenteEntity);
+            session.setAttribute("utente", utente);
+            model.addAttribute("utente", utente);
         } catch (Exception e) {
             model.addAttribute("error", "Errore di login.");
             return "error";
@@ -75,7 +74,7 @@ public class LoginController {
             return "error";
         }
 
-        UtenteEntity utenteEntity = (UtenteEntity) session.getAttribute("utente");
+        Utente utenteEntity = (Utente) session.getAttribute("utente");
         model.addAttribute("utente", utenteEntity);
         return "login/profilehomepage";
     }

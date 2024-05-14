@@ -1,13 +1,10 @@
 package com.unibg.UnibgProjectFrontend.controller;
 
-
-import com.unibg.UnibgProjectFrontend.entity.UtenteEntity;
 import com.unibg.UnibgProjectFrontend.model.*;
 import com.unibg.UnibgProjectFrontend.service.LoginService;
 import com.unibg.UnibgProjectFrontend.service.PrenotazioneService;
 import com.unibg.UnibgProjectFrontend.service.VoliService;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -72,9 +69,7 @@ public class PrenotazioneController {
             String mail=(String) session.getAttribute("mail");
             String idPrenotazione = (String) session.getAttribute("id_prenotazione");
             prenotazioneService.saveCheckin(checkinList.getCheckins(),mail,idPrenotazione);
-            UtenteEntity utenteEntity = loginService.findByMail(mail);
-            Utente utente = new Utente();
-            BeanUtils.copyProperties(utenteEntity,utente);
+            Utente utente = loginService.findByMail(mail);
             model.addAttribute(utente);
         } catch(Exception e){
             return "error";

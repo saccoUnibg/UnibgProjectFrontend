@@ -1,14 +1,12 @@
 package com.unibg.UnibgProjectFrontend.service;
 
-
-import com.unibg.UnibgProjectFrontend.entity.UtenteEntity;
 import com.unibg.UnibgProjectFrontend.model.Utente;
 
 public interface LoginService {
 
-    UtenteEntity saveRegistrazione(Utente utente) throws Exception;
+    Utente saveRegistrazione(Utente utente) throws Exception;
 
-    UtenteEntity login(Utente utente);
+    Utente login(Utente utente);
 
-    UtenteEntity findByMail(String mail);
+    Utente findByMail(String mail);
 }

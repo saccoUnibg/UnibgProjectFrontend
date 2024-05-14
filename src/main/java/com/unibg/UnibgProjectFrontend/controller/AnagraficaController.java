@@ -1,7 +1,5 @@
 package com.unibg.UnibgProjectFrontend.controller;
 
-
-import com.unibg.UnibgProjectFrontend.entity.UtenteEntity;
 import com.unibg.UnibgProjectFrontend.model.Utente;
 import com.unibg.UnibgProjectFrontend.service.AnagraficaService;
 import com.unibg.UnibgProjectFrontend.utils.UtilsGeneric;
@@ -32,9 +30,9 @@ public class AnagraficaController {
             return "error";
         }
         try{
-            UtenteEntity utenteEntity = anagraficaService.modificaAnagrafica(utente);
-            session.setAttribute("utente", utenteEntity);
-            model.addAttribute("utente", utenteEntity);
+            utente = anagraficaService.modificaAnagrafica(utente);
+            session.setAttribute("utente", utente);
+            model.addAttribute("utente", utente);
         } catch(Exception e){
             return "error";
         }
@@ -48,8 +46,8 @@ public class AnagraficaController {
             return "error";
         }
 
-        UtenteEntity utenteEntity = (UtenteEntity) session.getAttribute("utente");
-        if (anagraficaService.eliminaAnagrafica(utenteEntity)) {
+        utente = (Utente) session.getAttribute("utente");
+        if (anagraficaService.eliminaAnagrafica(utente)) {
             System.out.println("Utente eliminato con successo");
         } else {
             System.out.println("Errore durante eliminazione dell'utente");
