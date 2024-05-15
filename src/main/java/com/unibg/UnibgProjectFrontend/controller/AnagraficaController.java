@@ -21,7 +21,7 @@ public class AnagraficaController {
 
     @GetMapping("/modifica")
     public String modificaAnagrafica(){
-        return "login/modificaanagrafica";
+        return "anagrafica/modificaanagrafica";
     }
 
     @PostMapping("/modifica/success")
@@ -37,7 +37,7 @@ public class AnagraficaController {
             return "error";
         }
 
-        return "login/modificaanagraficasuccess";
+        return "anagrafica/modificaanagraficasuccess";
     }
 
     @PostMapping("/elimina")
@@ -53,7 +53,7 @@ public class AnagraficaController {
             System.out.println("Errore durante eliminazione dell'utente");
         }
 
-        return "eliminaAnagraficaSuccess";
+        return "anagrafica/eliminaAnagraficaSuccess";
     }
 
 }

@@ -86,6 +86,6 @@ public class LoginController {
         } catch (IllegalStateException ex) {
             System.out.println("Error: " + ex);
         }
-        return "logout";
+        return "login/logout";
     }
 }
