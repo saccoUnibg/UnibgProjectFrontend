@@ -13,4 +13,7 @@ public class Ricerca {
     private String arrivo;
     private String data;
     private String mail;
+    private String durata_min_scalo;
+    private String durata_max_scalo;
+    private String scalo;
 }
