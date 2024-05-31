@@ -66,11 +66,11 @@ public class PrenotazioneController {
     @PostMapping("/success")
     public String saveCheckin(@ModelAttribute("checkinList") CheckinList checkinList, HttpSession session, Model model) {
         try{
-            String mail=(String) session.getAttribute("mail");
+
+            String mail= (String) session.getAttribute("mail");
             String idPrenotazione = (String) session.getAttribute("id_prenotazione");
             prenotazioneService.saveCheckin(checkinList.getCheckins(),mail,idPrenotazione);
-            Utente utente = loginService.findByMail(mail);
-            model.addAttribute(utente);
+
         } catch(Exception e){
             return "error";
         }

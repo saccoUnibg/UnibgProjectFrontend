@@ -49,18 +49,12 @@ public class LoginController {
     public String loginForm(@ModelAttribute("utente") Utente utente, Model model, HttpSession session) {
         try {
 
-            if (session.getAttribute("mail") == null) {
-                utente = loginService.login(utente);
-                if (utente == null) {
-                    return "login/login";
-                } else {
-                    session.setAttribute("mail", utente.getMail());
-                }
-            } else {
-                utente = loginService.findByMail((String) session.getAttribute("mail"));
+            Utente utenteResponse = loginService.login(utente);
+            if (utente == null) {
+                return "login/login";
             }
-            session.setAttribute("utente", utente);
-            model.addAttribute("utente", utente);
+
+            model.addAttribute("utente", utenteResponse);
         } catch (Exception e) {
             model.addAttribute("error", "Errore di login.");
             return "error";
