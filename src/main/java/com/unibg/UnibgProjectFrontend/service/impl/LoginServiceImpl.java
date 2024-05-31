@@ -11,17 +11,13 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 @Service
 public class LoginServiceImpl implements LoginService {
-    @Autowired
-    RestTemplate restTemplate;
-    
+
     @Value("${backend.application.ep}")
     private String backendApplicationEp;
 
     public Utente saveRegistrazione(Utente utente) throws Exception {
 //        todo: chiamata rest all'applicazione BE
-        WebClient webClient = WebClient.create();
-
-
+        
         return null;
     }
 
