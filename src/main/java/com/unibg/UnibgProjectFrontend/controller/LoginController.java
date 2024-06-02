@@ -5,6 +5,7 @@ import com.unibg.UnibgProjectFrontend.model.Utente;
 import com.unibg.UnibgProjectFrontend.service.LoginService;
 import com.unibg.UnibgProjectFrontend.utils.UtilsGeneric;
 import jakarta.servlet.http.HttpSession;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@Slf4j
 @Controller
 public class LoginController {
 
@@ -57,6 +59,7 @@ public class LoginController {
             model.addAttribute("utente", utenteResponse);
         } catch (Exception e) {
             model.addAttribute("error", "Errore di login.");
+            log.error("Error during login: ", e);
             return "error";
         }
         return "login/profilehomepage";
