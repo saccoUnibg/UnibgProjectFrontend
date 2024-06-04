@@ -4,6 +4,7 @@ import com.unibg.UnibgProjectFrontend.model.Utente;
 import com.unibg.UnibgProjectFrontend.service.AnagraficaService;
 import com.unibg.UnibgProjectFrontend.utils.UtilsGeneric;
 import jakarta.servlet.http.HttpSession;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@Slf4j
 @Controller
 @RequestMapping("/anagrafica")
 public class AnagraficaController {
@@ -20,7 +22,7 @@ public class AnagraficaController {
     AnagraficaService anagraficaService;
 
     @GetMapping("/modifica")
-    public String modificaAnagrafica(){
+    public String modificaAnagrafica() {
         return "anagrafica/modificaanagrafica";
     }
 
@@ -29,11 +31,11 @@ public class AnagraficaController {
         if (!UtilsGeneric.isSessionActive(session)) {
             return "error";
         }
-        try{
+        try {
             utente = anagraficaService.modificaAnagrafica(utente);
             session.setAttribute("utente", utente);
             model.addAttribute("utente", utente);
-        } catch(Exception e){
+        } catch (Exception e) {
             return "error";
         }
 
@@ -48,9 +50,9 @@ public class AnagraficaController {
 
         utente = (Utente) session.getAttribute("utente");
         if (anagraficaService.eliminaAnagrafica(utente)) {
-            System.out.println("Utente eliminato con successo");
+            log.info("Utente eliminato con successo");
         } else {
-            System.out.println("Errore durante eliminazione dell'utente");
+            log.info("Errore durante eliminazione dell'utente");
         }
 
         return "anagrafica/eliminaAnagraficaSuccess";
